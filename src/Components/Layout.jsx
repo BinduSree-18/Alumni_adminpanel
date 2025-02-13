@@ -5,7 +5,8 @@ import { Link, useLocation } from "react-router-dom";
 import { IoLogInOutline } from "react-icons/io5";
 import { MdNotificationsActive } from "react-icons/md";
 import { MdSpaceDashboard } from "react-icons/md";
-import { MdReportProblem } from 'react-icons/md';
+import { IoPersonSharp } from "react-icons/io5";
+import { MdEmojiEvents } from "react-icons/md";
 // Breadcrumb Component
 const Breadcrumb = () => {
   const location = useLocation();
@@ -22,7 +23,7 @@ const Breadcrumb = () => {
             <li key={index} className="flex items-center space-x-2">
               <span>/</span>
               {isLast ? (
-                <span className=" text-lg font-semibold text-purple-600 capitalize">
+                <span className=" text-lg font-semibold text-blue-950 capitalize">
                   {segment}
                 </span>
               ) : (
@@ -54,11 +55,21 @@ const Layout = ({ children }) => {
       icon: MdNotificationsActive,
     },
     {
-      label:"Complaints",
-      path:"complaints",
-      icon: MdReportProblem,
+      label:"Students",
+      path:"Students",
+      icon: IoPersonSharp,
       
     },
+    {
+      label:"Team",
+      path:"Team",
+      icon: IoPersonSharp,
+    },
+    {
+      label:"Events",
+      path:"events",
+      icon: MdEmojiEvents,
+    }
   ];
 
   const location = useLocation();
@@ -85,14 +96,14 @@ const Layout = ({ children }) => {
       <div className="w-full fixed top-0 flex items-center justify-between h-[60px] z-[2] shadow-md bg-white">
         <div className="flex items-center">
           <HiOutlineViewList
-            className="text-2xl mx-3 block md:hidden text-purple-600 cursor-pointer"
+            className="text-2xl mx-3 block md:hidden text-blue-950 cursor-pointer"
             onClick={() => setShowSidebar(!showSidebar)}
           />
           <Link
             to="/"
-            className="logo font-semibold text-purple-600 select-none px-3 text-2xl"
+            className="logo font-semibold text-blue-950 select-none px-3 text-2xl"
           >
-            Girl Life
+            Alumni
           </Link>
         </div>
         <div className="flex items-center text-gray-700">
@@ -120,10 +131,10 @@ const Layout = ({ children }) => {
               key={index}
               to={`/${item.path}`}
               onClick={() => setShowSidebar(false)}
-              className={`tab-heading w-[97%] text-purple-600 mx-auto px-4 py-2 mt-2 text-lg font-bold flex items-center ${
+              className={`tab-heading w-[97%] text-blue-900 mx-auto px-4 py-2 mt-2 text-lg font-bold flex items-center ${
                 isActive(item.path)
-                  ? "text-purple-600"
-                  : "hover:text-purple-500"
+                  ? "text-blue-950"
+                  : "hover:text-green-500"
               }`}
             >
               <item.icon className="mr-2" />
@@ -131,7 +142,7 @@ const Layout = ({ children }) => {
             </Link>
           ))}
           <button
-            className="w-[90%] py-2 mx-auto bg-purple-600 font-bold text-white rounded-md flex items-center justify-center gap-2 mt-10"
+            className="w-[90%] py-2 mx-auto bg-blue-950 font-bold text-white rounded-md flex items-center justify-center gap-2 mt-10"
             onClick={() => {
               window.location.reload();
             }}
@@ -145,22 +156,22 @@ const Layout = ({ children }) => {
       {/* Content Layout */}
       <div className="flex flex-col md:flex-row mt-[60px] h-[calc(100vh-60px)]">
         {/* Desktop Sidebar */}
-        <div className="hidden md:flex flex-col w-[240px] border-r h-full bg-purple-50">
+        <div className="hidden md:flex flex-col w-[240px] border-r h-full bg-blue-50">
           {topBarTabs.map((item, index) => (
             <Link
               key={index}
               to={`/${item.path}`}
-              className={`tab-heading px-4 text-purple-600 py-2 text-lg mt-[3px] w-[92%] mx-auto font-semibold flex items-center rounded-md ${
+              className={`tab-heading px-4 text-blue-950 py-2 text-lg mt-[3px] w-[92%] mx-auto font-semibold flex items-center rounded-md ${
                 isActive(item.path)
-                  ? "bg-purple-100 text-purple-600"
-                  : "hover:bg-purple-100 hover:text-purple-600"
+                  ? "bg-blue-100 text-blue-950"
+                  : "hover:bg-blue-100 hover:text-blue-950"
               }`}
             >
               <item.icon className="mr-2" />
               <span>{item.label}</span>
             </Link>
           ))}
-          <button className="w-[90%] py-2 mx-auto bg-purple-600 text-white rounded-md flex items-center justify-center gap-2 mt-10">
+          <button className="w-[90%] py-2 mx-auto bg-blue-950 text-white rounded-md flex items-center justify-center gap-2 mt-10">
             Logout
             <IoLogInOutline />
           </button>
